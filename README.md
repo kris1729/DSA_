@@ -296,7 +296,8 @@ onr by one and find diff max
     }
 ```
 
-# Traming Rain Water 
+# Traping Rain Water 
+![](./ouestion_img/Trapping%20Rain%20Water.png)
 ### method-1 , using broute Force
 >Approch- At any point we take min(maxOfLeft , maxOfRight) and if it is greater than then
 ans+= (mini-arr[i])
