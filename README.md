@@ -352,3 +352,79 @@ int trap(vector<int> &arr)
     return ans;
 }
 ```
+> It can be solve in one loop using two pointer 
+
+# 3 Sum
+![](./ouestion_img/Triplate%20Sum%20Array.png)
+### Method-1 Broute force
+```cpp
+ bool find3Numbers(int arr[], int n, int x) {
+        for (int i = 0; i < n - 2; i++)
+            for (int j = i+1; j < n - 1; j++)
+                for (int k = i+2; k < n; k++)
+                    if ((arr[i] + arr[j] + arr[k]) == x)return 1;
+        return 0;   
+    }
+```
+## Method -2 , Two pointer approch
+>It is easy like 2 Sum problem ,
+we convert 3 sum problem into Two sum Problem.
+
+```cpp
+bool find3Numbers(int arr[], int n, int x) {
+
+    sort(arr, arr + n);
+    for (int i = 0; i < n - 2; i++) {
+        int key = x - arr[i];
+        // from here 2 Sum approch 
+        int st = i + 1, end = n - 1;
+        while (st < end) {
+            int sum = arr[st] + arr[end];
+            if (sum == key)return 1;
+            else if (sum < key)st++;
+            else end--;
+        }
+    }
+    return 0;
+
+}
+```
+# 4 Sum 
+![](./ouestion_img/4%20Sum.png)
+### Method-1 Broute Force 
+using 4 loop and chack it
+```cpp
+bool find4Numbers(int arr[], int n, int X) {
+    for (int i = 0; i < n - 3; i++)
+        for (int j = i + 1; j < n - 2; j++)
+            for (int k = j + 1; k < n - 1; k++)
+                for (int l = k + 1; l < n; l++)
+                    if (arr[i] + arr[j] + arr[k] + arr[l] == X)
+                        return 1;
+    return 0;
+}
+```
+### Method-2 by Using two pointer
+ first we convert the problen in 3 sum and then convert it in 2 sum ans solve 
+
+ ```cpp
+ bool find4Numbers(int arr[], int n, int X) {
+    sort(arr, arr + n);
+    for (int i = 0; i < n - 3; i++) {
+        for (int j = i + 1; j < n - 2; j++) {
+            int target = X - (arr[j] + arr[i]);
+            int st = j + 1, end = n - 1;
+            while (st < end) {
+                int key = arr[st] + arr[end];
+                if (key == target) return 1;
+                else if (key < target)st++;
+                else end--;
+            }
+        }
+    }
+    return 0;
+}
+```
+---
+> # 2D Array   
+
