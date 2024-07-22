@@ -427,4 +427,24 @@ bool find4Numbers(int arr[], int n, int X) {
 ```
 ---
 > # 2D Array   
+- value is in the form of row and col
+- array element store in continous manner/liner fassion
+- in momory nth elmenet 
+> Index= row_index*col + col_index
 
+*see formuls and get the proof of*
+> row_index = Index/col 
+
+> col_index = Index % col  
+
+in 1D array 
+> arr[ind] = base_add + ind * sizeOfElement
+
+in 2D array 
+> arr[row][col] = base_add + Index *sizeOfElement
+
+>## arr[i][j] = base_add +( i * col + j) * sizeOfElement
+
+## Creation of array
+- int arr[4][3]
+- int arr[2][3] = {1,2,3,4,5,6};
