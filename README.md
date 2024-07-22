@@ -494,4 +494,25 @@ for(int i =0;i<row;i++){
     swap(arr[i][j],arr[i][col-j-1]);
 }
 ```
-# Rotete Image 
+# Vector 2D
+```cpp
+vector<vector<int>>arr;
+vector<vector<int>>arr(row , vector<int>(col,val));
+// row and col 
+int row = arr.size();
+int col = arr[0].size();
+```
+# Print a 2D vector in WAVE form like sin graph
+```cpp
+for(int j =0;j<col;j++){
+    if(j&1)
+    for(int i =row-1;i>=0;i--)
+    cout<arr[i][j];
+    else
+    for(int i =0;i<row;i++)
+    cout<<arr[i][j];
+}
+```
+# Spiral From Vector Print
+   - first top , second right ,third bottom and at the last 
+   print left ,
