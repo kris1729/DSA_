@@ -265,3 +265,89 @@ int maxSum = nums[0],prifixSum = 0;
 return maxSum;
 ```
 *why*  because -ve prifix always dec the continous sum.
+
+# Max Diff B/W 2 Element
+![](./ouestion_img/Max%20Diff%20between%20two%20Incr%20Element.png)
+### Method-1 ,BrouteForce Approch
+not greater element alwys should be in right side
+```cpp
+int maximumDifference(vector<int>& arr) {
+        int ans = INT_MIN, n = arr.size();
+        for (int i = 0; i < n - 1; i++)
+            for (int j = i; j < n; j++)
+                ans = max(ans, arr[j] - arr[i]);
+        return ans > 0 ? ans : -1;
+    }
+```
+### Method-2, Suffix Max IMP
+form the last we make a suffix array after this traverse 
+onr by one and find diff max
+
+```cpp
+ int maximumDifference(vector<int>& arr) {
+        int n = arr.size(), ans = INT_MIN;
+        int suffix[n];
+        suffix[n - 1] = arr[n - 1];
+        for (int i = n - 2; i >= 0; i--)
+            suffix[i + 1] > arr[i] ? suffix[i] = suffix[i + 1]: suffix[i] = arr[i];   
+        for (int i = 0; i < n; i++)
+            ans = max(ans, suffix[i] - arr[i]);
+        return ans > 0 ? ans : -1;
+    }
+```
+
+# Traming Rain Water 
+### method-1 , using broute Force
+>Approch- At any point we take min(maxOfLeft , maxOfRight) and if it is greater than then
+ans+= (mini-arr[i])
+
+in broute Force approch find leftmax/prifixMax using loop and rightmax/suffixMax using loop
+
+### method-2 , using suffixMax , prifixMax
+in b/w we find the suffixMax array and prifixMax array 
+suffixMax[i] = maxElement in all left part
+prifixMax[i] = maxElement in all righr part
+
+```cpp
+   int trap(vector<int>& arr) {
+        int n = arr.size(), suffixMax[n], prifixMax[n], ans = 0;
+        suffixMax[n - 1] = arr[n - 1];
+        prifixMax[0] = arr[0];
+        // constructing prifixMax arry
+        for (int i = 1; i < n; i++)
+            prifixMax[i] = max(arr[i], prifixMax[i - 1]);
+        // constructing suffixMax array
+        for (int i = n - 2; i >= 0; i--)
+            suffixMax[i] = max(arr[i], suffixMax[i + 1]);
+        // calculating all traped water
+        for (int i = 1; i < n - 1; i++) {
+            int minh = min(suffixMax[i], prifixMax[i]);
+            if (minh > arr[i])
+                ans += (minh - arr[i]);
+        }
+        return ans;
+    }
+```
+### method -3   Optmize the space Best solution
+in b/w we first calculate the index which has max val,
+and calculate left part from left and right part from right.
+```cpp
+int trap(vector<int> &arr)
+{
+    int maxValIndex = 0, n = arr.size(),leftMax = 0, rightMax = 0, ans = 0;
+    // calculate maxVal Index
+    for (int i = 1; i < n; i++)
+        if (arr[maxValIndex] < arr[i]) maxValIndex = i;
+    // calculte left part
+    for (int i = 0; i < maxValIndex; i++)
+        if (leftMax > arr[i]) ans += leftMax - arr[i];
+        else leftMax = arr[i];
+
+    // calculate right part
+    for (int i = n - 1; i > maxValIndex; i--)
+        if (rightMax > arr[i])ans += rightMax - arr[i];
+    else rightMax = arr[i];
+
+    return ans;
+}
+```
