@@ -438,13 +438,60 @@ bool find4Numbers(int arr[], int n, int X) {
 > col_index = Index % col  
 
 in 1D array 
-> arr[ind] = base_add + ind * sizeOfElement
+> arr[ind] = Base_add + ind * sizeOfElement
 
 in 2D array 
 > arr[row][col] = base_add + Index *sizeOfElement
 
->## arr[i][j] = base_add +( i * col + j) * sizeOfElement
+>## arr[i][j] = Base_add +( i * col + j) * sizeOfElement
 
 ## Creation of array
 - int arr[4][3]
-- int arr[2][3] = {1,2,3,4,5,6};
+- int arr[2][3] = { 1,2,3,4,5,6 };
+
+*pass A 2D array* 
+>## function ( arr[][col] )
+
+<br/>
+
+# ADD TWO MATRIX
+```cpp
+    int ans[row][col];
+    for(int i =0;i<row;i++)
+    for(int j =0;j<col;j++)
+    ans[i][j]=arr[i][j]+brr[i][j];
+    return arr;
+```
+# Print Row index with Max Sum
+```cpp
+int ansIndex = -1, maxSum = INT_MIN;
+for (int i = 0; i < row; i++) {
+    int sum = 0;
+    for (int j = 0; j < col; j++)
+        sum += arr[i][j];
+    if (sum > maxSum) {
+        maxSum = sum;
+        ansIndex = i;
+    }
+}
+return ansIndex;
+```
+# Print Sum of Digonal
+```cpp
+for(int i =0;i<row;i++)
+{ 
+    // (0,0) se start diog
+    ans1+=arr[i][i];
+    // (row , row) se start ho 
+    ans2+=arr[i][row-i-1];
+}
+```
+# Reverse each row of Matrix
+```cpp
+for(int i =0;i<row;i++){
+    //reverse i th row
+    for(int j =0;j<col/2;j++)
+    swap(arr[i][j],arr[i][col-j-1]);
+}
+```
+# Rotete Image 
