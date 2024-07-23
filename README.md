@@ -613,3 +613,56 @@ or
     }
 ```
 # Rotate Image 90 Degree
+![](./ouestion_img/Rotate%20Image.png)
+### method-1 , By taking a new ans Matrix
+```cpp
+void rotate(vector<vector<int>>& mat) {
+        int n = mat.size();
+        vector<vector<int>>ans(n,vector<int>(n,0));
+        // make new matrix
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                ans[j][n-i-1] = mat[i][j];
+       
+         // use the new matrix
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n ; j++)
+                mat[i][j] = ans[i][j];
+       
+    }
+```
+### Method -2 , Optimize space complexity
+- by observing the image for 90 rotation
+(col->reverse)'s transpose = 90* rotaion
+or first transpose than reverse the row 
+
+```cpp
+ void rotate(vector<vector<int>>& mat) {
+        int col = mat[0].size(), row = mat.size();
+        // transpose
+        for (int i = 0; i < row; i++)
+            for (int j = 0; j < col; j++)
+                if (i > j)swap(mat[i][j], mat[j][i]);
+        // revese row
+        for (int i = 0; i < row; i++)
+            for (int j = 0; j < col / 2; j++)
+                swap(mat[i][j], mat[i][col - j - 1]);
+    }
+```
+# Rptated matrix 180 
+> For the 180* ratation two time 90 or use other observation
+
+or using one time row reverse and one time col reverse 
+```cpp
+  void rotate(vector<vector<int>>& mat) {
+        int n = mat.size();
+        // row reverse
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n / 2; j++)
+                swap(mat[i][j], mat[i][n - j - 1]);
+        // col ratation
+        for (int i = 0; i < n / 2; i++)
+            for (int j = 0; j < n; j++)
+                swap(mat[i][j], mat[n - i - 1][j]);
+    }
+```
