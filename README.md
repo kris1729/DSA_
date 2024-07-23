@@ -649,7 +649,7 @@ or first transpose than reverse the row
                 swap(mat[i][j], mat[i][col - j - 1]);
     }
 ```
-# Rptated matrix 180 
+# Rotated matrix 180 
 > For the 180* ratation two time 90 or use other observation
 
 or using one time row reverse and one time col reverse 
@@ -665,4 +665,50 @@ or using one time row reverse and one time col reverse
             for (int j = 0; j < n; j++)
                 swap(mat[i][j], mat[n - i - 1][j]);
     }
+```
+# Rotate a matrix 90* AntiClock wise
+![](./ouestion_img/Rotate_Image_90_AniClock.png)
+in this qution we take the transpose of the given matrix ,
+after this we will reverse the cols
+```cpp
+ void rotate(vector<vector<int>>& mat) {
+        int n = mat.size();
+        // transpose
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                if (i > j)
+                    swap(mat[i][j], mat[j][i]);
+        // reverse col
+        for (int i = 0; i < n / 2; i++)
+            for (int j = 0; j < n; j++)
+                swap(mat[i][j], mat[n - 1 - i][j]);
+    }
+```
+# Rotate a Matrix K time
+k%4 == 0 --> No rotaion
+
+k%4 == 1 ---> that represent 90* clockWise rotaion --> transpose + row reverse 
+
+k%4 == 2 ---> that represent 180* rotation --> row reverse + col Reverse 
+
+k%4 == 3 ---> that represent 270* / AntiClock Rotaion --> transpose + col Reverse
+
+```cpp
+void Rotat90(vector<vector<int>>&mat,int n){
+    // transpose 
+    for(int i =0;i<n-1;i++)
+    for(int j = i+1;j<n;j++)
+    swap(mat[i][j],mat[j][i]);
+// reverse row
+for (int i = 0; i < row; i++)
+            for (int j = 0; j < col / 2; j++)
+                swap(mat[i][j], mat[i][col - j - 1]);
+}
+
+void RotedKTime(vector<vector<int>>&mat,int k,int n){
+    k = k%4;
+    while(k--)
+    Rotat90(mat,n);
+
+}
 ```
