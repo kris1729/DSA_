@@ -578,3 +578,38 @@ print the matrix in the spiral order
         return ans;
     }
 ```
+# Transpose of a matrix
+![](./ouestion_img/Transpose_mat.png)
+
+ ```cpp
+  vector<vector<int>> transpose(vector<vector<int>>& mat) {
+        int row = mat.size(), col = mat[0].size();
+        vector<vector<int>> ans(col, vector<int>(row, 0));
+        for (int i = 0; i < row; i++)
+            for (int j = 0; j < col; j++)
+                ans[j][i] = mat[i][j];
+
+        return ans;
+```
+# Transpose a matrix in O(1) space complexity
+![](./ouestion_img/Transpose_mat_gfg.png)
+- This Mathod is work in only squre Matrix
+```cpp
+void transpose(vector<vector<int> >& mat, int n)
+    {
+         for (int i = 0; i <n-1; i++)
+            for (int j = i + 1; j < n; j++)
+                swap(mat[j][i], mat[i][j]);
+    }
+```
+or 
+- swap upper matrix or  lower matrix only
+```cpp
+ void transpose(vector<vector<int> >& mat, int n)
+    {
+         for (int i = 0; i <n; i++)
+            for (int j = 0; j < n; j++)
+               if(i>j) swap(mat[j][i], mat[i][j]);
+    }
+```
+# Rotate Image 90 Degree
