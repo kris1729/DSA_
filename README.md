@@ -513,7 +513,8 @@ for(int j =0;j<col;j++){
     cout<<arr[i][j];
 }
 ```
-# Spiral From Vector Print
+# Print a matrix in  Spiral from
+![](./ouestion_img/Spiral_matrix.png)
    - first top , second right ,third bottom and at the last 
    print left ,
 ```cpp
@@ -548,4 +549,32 @@ for(int j =0;j<col;j++){
         return ans;
     }
 ```
-# Transport a Matrix
+# spiral Matrix -II 
+print the matrix in the spiral order 
+![](./ouestion_img/Spiral_matrix_II.png)
+
+```cpp
+ vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int>> ans(n, vector<int>(n, 0));
+        int left = 0, right = n - 1, top = 0, bottom = n - 1, num = 1;
+        while (left <= right && top <= bottom) {
+
+            for (int i = left; i <= right; i++) 
+                ans[top][i] = num++;
+            top++;
+
+            for (int i = top; i <= bottom; i++) 
+                ans[i][right] = num++;
+            right--;
+
+            for (int i = right; i >= left; i--) 
+                ans[bottom][i] = num++;
+            bottom--;
+
+            for (int i = bottom; i >= top; i--) 
+                ans[i][left] = num++;
+            left++;
+        }
+        return ans;
+    }
+```
