@@ -516,3 +516,36 @@ for(int j =0;j<col;j++){
 # Spiral From Vector Print
    - first top , second right ,third bottom and at the last 
    print left ,
+```cpp
+ vector<int> spiralOrder(vector<vector<int>>& arr) {
+        int top = 0;
+        int bottom = arr.size() - 1; // row
+        int left = 0;
+        int right = arr[0].size() - 1; // col
+        vector<int> ans;
+        while (top <= bottom && left <= right) {
+            // print top
+            for (int i = left; i <= right; i++)
+                ans.push_back(arr[top][i]);
+            top++;
+            // print right
+            for (int i = top; i <= bottom; i++)
+                ans.push_back(arr[i][right]);
+            right--;
+            // print bottom
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--)
+                    ans.push_back(arr[bottom][i]);
+                bottom--;
+            }
+            // print left
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--)
+                    ans.push_back(arr[i][left]);
+                left++;
+            }
+        }
+        return ans;
+    }
+```
+# Transport a Matrix
