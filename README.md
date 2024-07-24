@@ -874,3 +874,54 @@ int candiate = 0,vote =0,n = nums.size();
     if(cnt>n/2)return candiate;
      return -1;
 ```     
+---
+---
+> # STRING 
+it use dynamic memory
+## NULL CHARACTOR --> '\0'
+```cpp
+char arr[10];
+cin>>arr;   // input is --> abcdefg
+arr[2] = '\0';
+cout<<arr;
+// output of the code is ---> ab
+// not print after the null charactor
+```
+in string
+```cpp
+  string str = "abce";
+  str[3] = '\0';
+  cout<<str; // output--> abc
+```
+cin not take input after (space , tab , enter)
+```cpp
+string str = "raj singh";
+cout<<str; // output --> raj singh
+//but 
+string str1 ;
+cin>>str1; // input --> raj singh
+cout<<str1;  // output--> raj
+```
+take input whole line
+
+```cpp
+string str;
+getline(cin,str);
+cout<<str;
+```
+- scape charactor
+after scape one charctor only print , and scape char will remove
+
+```cpp
+string str = "I am a \"good\" boy."
+string str1 = "\\0";
+cout<<str;  // output --> I am a "good" boy.
+cout<<str1; //  output--> \0
+```
+but but 
+```cpp
+string str = "\0";
+cout<<str;  // output -->   --> nothing
+// the meaning pf \0 is print nothing
+```
+# Problem -->  
