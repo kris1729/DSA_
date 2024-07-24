@@ -762,3 +762,82 @@ void RotedKTime(vector<vector<int>>&mat,int k,int n){
         return 0;
     }
 ```
+
+# Search in a row-colmun sorted Matrix
+
+![](./ouestion_img/search%20in%20A%20row-column%20sorted%20Matrix.png)
+- it can be solve by using linear search O(n^2)
+- it can solve by first select row and apply in row binary search
+# most optimize way # Important
+in this mathod we take i , a row index and j a col index , 
+at any point we can move it left to change the col (j--), it can move 
+in down for change the row number (i++);
+
+> i and j can be only most(top-Right) or most(bottom-left) bcz 
+at this this point move left value is dec and move bottom value is increases
+
+```cpp
+ bool search(vector<vector<int>> mat, int n, int m, int x) {
+    // start form most top-right
+        int row = 0, col = m - 1;
+        while (row <= n - 1 && col >= 0)
+            if (mat[row][col] == x)return 1;
+            else if (mat[row][col] < x)row++;
+            else col--;
+        
+        return 0;
+    }
+```
+- time complexity when it search most right col and most bottom col
+**O(m+n)**
+---
+---
+# IMPORTANT
+> # Store two value in a variable
+let you have 6 time 2 or (2,2,2,2,2,2) then how can you store num and it's 
+frequency in a siingle variable.
+
+take a number like 100 ,
+**var = 2 + 6*100 ,,  var = 602 , for finding value and freq
+## value = var%100, freq = var/100  
+*same like finding row and col index  index
+## row_index = index/col , col_index = index%col
+
+
+# Find missing and reapting value 
+![](./ouestion_img/Missing%20and%20Repating.png)
+- this can be solve using two loop broute force approch
+### by the use of frequency array
+```cpp
+vector<int> findTwoElement(vector<int> arr, int n) {
+    int freq[n + 1] = {0}, val1, val2;
+    for (int i = 0; i < n; i++) freq[arr[i]]++;
+    for (int i = 1; i <= n; i++) {
+        if (freq[i] == 0) val1 = i;
+        if (freq[i] == 2) val2 = i;
+    }
+    return {val2, val1};
+}
+```
+### by using no extra space for the storege
+- traverse element one by one , which value we get ,
+go that index(arr[i]%n) we will increse that index value by n (+n)
+something
+
+```cpp
+vector<int> findTwoElement(vector<int> arr, int n) {
+    // first we subtract 1 from each to match the index from zero
+    for (int i = 0; i < n; i++)arr[i]--;
+
+    int val1, val2;
+    for (int i = 0; i < n; i++)
+        arr[arr[i] % n] += n; // this store the freq 
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] / n == 0)val1 = i + 1;
+        if (arr[i] / n == 2)val2 = i + 1;
+    }
+    return {val2, val1};
+}
+```
+
