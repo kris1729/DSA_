@@ -709,6 +709,56 @@ void RotedKTime(vector<vector<int>>&mat,int k,int n){
     k = k%4;
     while(k--)
     Rotat90(mat,n);
-
 }
+```
+
+# Search in 2D matrix
+![](./ouestion_img/Search_in_2D_matrix.png)
+### method-1 , Using leanerSerch O(n^2)
+```cpp
+  bool searchMatrix(vector<vector<int>>& mat, int key) {
+        for (int i = 0; i < mat.size(); i++)
+            for (int j = 0; j < mat[0].size(); j++)
+                if (mat[i][j] == key)
+                    return 1;
+        return 0;
+    }
+```
+### Using binary search in specfic row O(NlogN)
+```cpp
+ bool searchMatrix(vector<vector<int>>& mat, int key) {
+        int row = mat.size(), col = mat[0].size();
+        for (int i = 0; i < row; i++)
+            if (mat[i][0] <= key && key <= mat[i][col - 1]) {
+                int st = 0, end = col - 1, mid;
+                while (st <= end) {
+                    mid = (st + end) / 2;
+                    if (mat[i][mid] == key)
+                        return 1;
+                    else if (mat[i][mid] > key)
+                        end = mid - 1;
+                    else
+                        st = mid + 1;
+                }
+            }
+        return 0;
+    }
+```
+
+### USing pure Binary seach App O(log(n*n))
+*row = index/col , col = index%col*
+
+```cpp
+ bool searchMatrix(vector<vector<int>>& mat, int key) {
+        int row = mat.size(), col = mat[0].size();
+        int st = 0, end = row * col - 1;
+        while (st <= end) {
+            int mid = (st + end) / 2;
+            int r = mid / col, c = mid % col;
+            if (mat[r][c] == key)return 1;
+            else if (mat[r][c] > key)end = mid - 1;
+            else st = mid + 1;
+        }
+        return 0;
+    }
 ```
