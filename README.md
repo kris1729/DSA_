@@ -840,4 +840,37 @@ vector<int> findTwoElement(vector<int> arr, int n) {
     return {val2, val1};
 }
 ```
+# Mejority Element #important
+![](./ouestion_img/Mejority%20Element.png)
 
+## MOORE VOTING ALGORITHOM
+if vote of candiate is zero then cur element is new condiate
+if current element is the same candiate the vote++ , else vote--
+```cpp
+ int majorityElement(vector<int>& nums) {
+        int candiate = 0,vote =0;
+        for (int i = 0; i < nums.size(); i++) {
+            if (vote == 0) candiate = nums[i];
+            if (candiate == nums[i])vote++;
+            else vote--;
+        }
+        return candiate;
+    }
+```
+## gfg same question
+![](./ouestion_img/same.png)
+```cpp
+int candiate = 0,vote =0,n = nums.size();
+        for (int i = 0; i < n; i++) {
+            if (vote == 0)
+                candiate = nums[i];
+            if (candiate == nums[i])
+                vote++;
+            else
+                vote--;
+        }
+    int cnt =0;
+    for(int i =0;i<n;i++)if(nums[i]==candiate)cnt++;
+    if(cnt>n/2)return candiate;
+     return -1;
+```     
