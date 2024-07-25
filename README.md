@@ -925,3 +925,68 @@ cout<<str;  // output -->   --> nothing
 // the meaning pf \0 is print nothing
 ```
 # Problem -->  
+# Longest Palidrom
+![](./ouestion_img/longest%20Palindrome.png)
+- odd the one time full all time odd freq-1 , and in the 
+case of even frequency we add 
+
+```cpp
+ int longestPalindrome(string s) {
+        unordered_map<char, int> mp;
+        int ans = 0;
+        bool flag = 0;
+        for (auto x : s) mp[x]++;
+
+        for (auto x : mp)
+            x.second& 1 ? ans += x.second-1, flag = true : ans += x.second;
+        if (flag) ans++;
+
+        return ans;
+    }
+```
+![](./ouestion_img/Sort%20Vowels%20in%20a%20string.png)
+my solution
+```cpp
+ bool isVow(char x) {
+        return (x == 'a' || x == 'e' || x == 'i' || x == 'o' || x == 'u' ||
+                x == 'A' || x == 'E' || x == 'I' || x == 'O' || x == 'U');
+    }
+
+    string sortVowels(string st) {
+        string vow = ""; 
+        int j = 0;
+
+        for (auto x : st)if (isVow(x))vow += x;
+
+        sort(vow.begin(), vow.end());
+      
+        for (int i = 0; i < st.size(); i++)
+            if (isVow(st[i])) st[i] = vow[j++];
+
+        return st;
+    }
+```
+
+# Add String  #IMPORTANT
+![](./ouestion_img/Add%20String.png)
+
+- in this question we start the traversing from last and 
+add with carry while all(first num, second num and carry) end.
+we update the carry by *carray = sum/10*
+and we update the ans by *ans += (sum%10)+'0';
+```cpp
+  string addStrings(string num1, string num2) {
+        int i = num1.size() - 1, j = num2.size() - 1, carry = 0;
+        string ans = "";
+        while (i >= 0 || j >= 0 || carry) {
+            int sum = carry;
+            if (i >= 0)sum += num1[i--] - '0';
+            if (j >= 0)sum += num2[j--] - '0';
+            ans += (sum % 10) + '0';
+            carry = sum / 10;
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+```
+
