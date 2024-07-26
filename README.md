@@ -1086,6 +1086,7 @@ cout<<*ptr1;
 ptr1--;}
 // ptr1--  means  ptr1 = ptr1 - 1 , a prev element
 ```
+# important
  - > BUT BUT .. we can's use in the case of arr
  as arr++ or arr-- it constant can not be change like ptr
  - arr+1 ✅✅✅ but arr++ or  arr = arr + 1 ❎❎❎
@@ -1097,4 +1098,8 @@ ptr1--;}
  > we can change the ptr value but can't change the ptr address
  ptr's addres is constent
 
- # Pointer jishme kisi ka address store hota hai (ptr) us address pe ek value hoti hai (*ptr) , pointer ka bhi address hota hai us address pe pointer ke address ki value store hoti hai
+ # Pointer jishme kisi ka address store hota hai (ptr) us address pe ek value hoti hai (*ptr) , pointer ka bhi address hota hai us address pe pointer ke adress bali value store hoti hai
+
+---
+
+# Pointer of Charactor array
