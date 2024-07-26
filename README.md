@@ -1037,5 +1037,32 @@ ptr = &b;
 cout<<b<<endl; // 123
 // now pointer is pointing b not a
 ```
+## Array address store
+![](./ouestion_img/array%20add.png)
 
+- > arr is a address of arr[0]
+- > so , arr, arr+1,arr+2,arr+3 are the addres
+```cpp
+cout<<arr+2;
+// arr + i = baseAdd+ i * data type size 
+// for value
+cout<<*(arr+2); // arr[2] or (2+arr) or 2[arr] are same
+cout<<*(2+arr);
+cout<<2[arr];
+int *ptr2 = &arr[1];
+```
+ - > arr = &arr[0]
+ - >     = &*(arr+0)
+ - >     = &*(arr)
+ - >     = arr
+ - *& can be cancel each other
 
+ ### Print the value
+ ```cpp
+ for(int i =0;i<5;i++)
+ {
+ cout<<*(arr+i);
+ // print addres
+cout<<(arr+i) ; // &arr[i]
+}
+```
