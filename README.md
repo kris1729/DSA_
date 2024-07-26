@@ -990,3 +990,52 @@ and we update the ans by *ans += (sum%10)+'0';
     }
 ```
 
+
+---
+# pointer
+```cpp
+int a = 5;
+int b = 4;
+// for know the add.
+cout<<&a<<" ";
+// for store the addof any variable use Pointer
+int *ptr = &a;
+// print add of a 
+cout<<ptr;
+
+```
+- by **symble table** , lets varible a and b has a memory address
+400 , 500 and at the 400 memory address , value present is 5 and 
+at he 500 memory address value is 4 presen.
+
+```cpp
+float a = 1.2;
+float *ptr = &a; // use * when pointer create
+cout<<&a<<" "<<ptr ; // both value will same
+cout<<*ptr; // 1.2 vale at the ptr address
+```
+
+> ## size of pointer
+```cpp
+int a = 12;
+float b =1234.4;
+int *ptr1 = &a;
+float *ptr2 = &b;
+cout<<sizeof(ptr1)<<" "<< sizeof(ptr2); // 4  4 
+```
+size of pointer will not depend upon data type 
+it only depend **RAM-SIZE** if RAM is 4GB then all pointer
+will be 4 byte if 8GB the 8 byte if 16 than it will be 16 byte
+```cpp
+int a = 10;
+int b = 13;
+int *ptr = &a;
+
+ptr = &b;
+*ptr = 123;
+
+cout<<b<<endl; // 123
+// now pointer is pointing b not a
+```
+
+
