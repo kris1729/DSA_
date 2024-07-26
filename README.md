@@ -1066,3 +1066,35 @@ int *ptr2 = &arr[1];
 cout<<(arr+i) ; // &arr[i]
 }
 ```
+# Airthmetic Operation as a pointer
+## Use Pointer as a Array
+```cpp
+int *ptr = arr;
+for(int i =0;i<5;i++)
+cout<<ptr[i]; // or cout<<*(ptr+i);
+
+// or 
+for(int i =0;i<5;i++)
+{
+    cout<<*ptr;
+    ptr++;
+}
+// reverse order
+int *ptr1 = arr[4];
+for(int i =0;i<4;i++){
+cout<<*ptr1;
+ptr1--;}
+// ptr1--  means  ptr1 = ptr1 - 1 , a prev element
+```
+ - > BUT BUT .. we can's use in the case of arr
+ as arr++ or arr-- it constant can not be change like ptr
+ - arr+1 ✅✅✅ but arr++ or  arr = arr + 1 ❎❎❎
+
+ > computer alloted address autometcaly , we can't say for 
+ specfic  adderess by the help of symble table, bcz by this present data can be loss
+
+
+ > we can change the ptr value but can't change the ptr address
+ ptr's addres is constent
+
+ # Pointer jishme kisi ka address store hota hai (ptr) us address pe ek value hoti hai (*ptr) , pointer ka bhi address hota hai us address pe pointer ke address ki value store hoti hai
