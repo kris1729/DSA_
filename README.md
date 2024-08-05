@@ -989,6 +989,140 @@ and we update the ans by *ans += (sum%10)+'0';
         return ans;
     }
 ```
+# Roman to Integer
+![](./ouestion_img/Integer%20to%20num.png)
+in which we see only if s[i]< s[i+1] than it consider as negative and else if consider as possitive add inn the ans
+
+```cpp
+ int romanToInt(string s) {
+        int ans = 0;
+        unordered_map<char, int> mp{{'I', 1},   {'V', 5},   {'X', 10},
+                                    {'L', 50},  {'C', 100}, {'D', 500},
+                                    {'M', 1000}};
+
+        for (int i = 0; i < s.size(); i++)
+            if (mp[s[i]] < mp[s[i + 1]])
+                ans -= mp[s[i]];
+            else
+                ans += mp[s[i]];
+
+        return ans;
+ }
+ ```
+ OR
+ ```cpp
+   int num(char c) {
+        if (c == 'I')
+            return 1;
+        else if (c == 'V')
+            return 5;
+        else if (c == 'X')
+            return 10;
+        else if (c == 'L')
+            return 50;
+        else if (c == 'C')
+            return 100;
+        else if (c == 'D')
+            return 500;
+        else
+            return 1000;
+    }
+    int romanToInt(string s) {
+        int ans = 0;
+        for (int i = 0; i < s.size() - 1; i++) {
+            if (num(s[i]) < num(s[i + 1]))
+                ans -= num(s[i]);
+            else
+                ans += num(s[i]);
+        }
+        ans += num(s[s.size() - 1]);
+        return ans;
+    }
+ ```
+
+ # Integer to number
+ in which we expent the number baased upon its value and 
+ we write romon value based upon the integer value 
+
+ 2232 --> 2000 + 200 + 30 + 2 --> MM + CC + XXX + II
+ like this
+ ```cpp
+ string intToRoman(int num) {
+        string ans = "";
+        unordered_map<int, string> mp = {
+            {3000, "MMM"}, {2000, "MM"},  {1000, "M"},  {900, "CM"},
+            {800, "DCCC"}, {700, "DCC"},  {600, "DC"},  {500, "D"},
+            {400, "CD"},   {300, "CCC"},  {200, "CC"},  {100, "C"},
+            {90, "XC"},    {80, "LXXX"},  {70, "LXX"},  {60, "LX"},
+            {50, "L"},     {40, "XL"},    {30, "XXX"},  {20, "XX"},
+            {19, "XIX"},   {18, "XVIII"}, {17, "XVII"}, {16, "XVI"},
+            {15, "XV"},    {14, "XIV"},   {13, "XIII"}, {12, "XII"},
+            {11, "XI"},    {10, "X"},     {9, "IX"},    {8, "VIII"},
+            {7, "VII"},    {6, "VI"},     {5, "V"},     {4, "IV"},
+            {3, "III"},    {2, "II"},     {1, "I"}};
+
+        int mul = 1;
+        while (num > 0) {
+            int rem = num % 10;
+            rem = rem * mul;
+            num /= 10;
+            string temp = mp[rem];
+            mul *= 10;
+            reverse(temp.begin(), temp.end());
+            ans += temp;
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+```
+or 
+```cpp
+string intToRoman(int num) {
+        string s ="";
+        while(num>=1000){
+            s+="M";num-=1000;
+        }
+        if(num>=900)
+        {
+            s+="CM";num-=900;
+        }
+        while(num>=500){
+            s+="D";num-=500;
+        }
+        if(num>=400){
+            s+="CD";num-=400;
+
+        }
+        while(num>=100){
+            s+="C";num-=100;
+        }
+        if(num>=90){
+            s+="XC";num-=90;
+        }
+        while(num>=50)
+        {
+            s+="L";num-=50;
+        }
+        if(num>=40){
+            s+="XL";num-=40;
+        }
+        while(num>=10){
+            s+="X";num-=10;
+        }
+        if(num==9){
+            s+="IX";num-=9;}
+        while(num>=5){
+            s+="V";num-=5;
+        }
+        if(num>=4){
+            s+="IV";num-=4;
+        }
+        while(num>=1){
+            s+="I";
+            num-=1;
+        }
+        return s;}
+ ```
 
 
 ---
